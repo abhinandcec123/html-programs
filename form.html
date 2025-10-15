@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Validation</title>
+<script>
+function validate() {
+    
+    var name = document.forms["frm"]["name"].value.trim(); 
+    var mobile = document.forms["frm"]["mobile"].value.trim();
+    var email = document.forms["frm"]["mail"].value.trim();
+
+   
+    var numformat = /^\d{10}$/; 
+    var mailformat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; 
+
+   
+    if (name === "") {
+        alert("Name cannot be empty.");
+        return false;
+    }
+
+  
+    if (mobile === "") {
+        alert("Mobile number cannot be empty.");
+        return false;
+    } 
+    
+    else if (!mobile.match(numformat)) {
+        alert("Mobile Number must contain exactly 10 digits.");
+        return false;
+    }
+
+    
+    if (email === "") {
+        alert("Email cannot be empty.");
+        return false;
+    }
+    else if (!email.match(mailformat)) {
+        alert("Invalid email format.");
+        return false;
+    }
+    
+   
+    alert("Successfully submitted!");
+    return true; 
+}
+</script>
+</head>
+<body>
+    <h1>Form Validation</h1>
+    <form name="frm" onsubmit="return validate()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+        
+        <label for="mobile">Mobile No:</label>
+        <input type="text" id="mobile" name="mobile"><br>
+        
+        <label for="mail">Email:</label>
+        <input type="email" id="mail" name="mail"><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
